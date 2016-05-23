@@ -9,3 +9,5 @@ ln -s .dotfiles/config .config
 ln -s .dotfiles/emacs/emacs .emacs
 ln -s .dotfiles/emacs/emacs.d .emacs.d
 ln -s .dotfiles/emacs/evil evil
+ln -s .dotfiles/panel panel
+
