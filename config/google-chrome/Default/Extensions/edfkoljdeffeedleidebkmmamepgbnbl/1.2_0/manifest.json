@@ -1,0 +1,19 @@
+{
+   "app": {
+      "launch": {
+         "web_url": "http://godfatherfivefamilies.com/chrome?entrypt=gf-gcs-z-z-z-z"
+      },
+      "urls": [ "http://godfatherfivefamilies.com/chrome?entrypt=gf-gcs-z-z-z-z" ]
+   },
+   "default_locale": "en",
+   "description": "Five Families. One War.",
+   "icons": {
+      "128": "TGF_icon_128x128.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMVOSMvkp2itD4geWG0cuJa5V4Sq96Hdolfp4EJzeW7v2jgDMrZb1uJw50dHn7Sa43VcKyEsdJAg4CRWl5EuKqzsPIndGMmUUYBRoQV2p5CvV8UeYyEIsA2u8TwS2l5wFs+99dWbz5MdpLKnTRMrGCqbb2M9hh6/KgZftveEpc/wIDAQAB",
+   "manifest_version": 2,
+   "name": "The Godfather: Five Families",
+   "permissions": [ "unlimitedStorage", "notifications" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.2"
+}

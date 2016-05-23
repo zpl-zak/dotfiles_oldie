@@ -1,0 +1,143 @@
+{
+   "Atom_bomb": {
+      "message": "Atom bomb"
+   },
+   "Basic_weapons": {
+      "message": "Basic weapons"
+   },
+   "Chainsaw": {
+      "message": "Chainsaw"
+   },
+   "Flamethrower": {
+      "message": "Flamethrower"
+   },
+   "Free_weapons": {
+      "message": "Free weapons"
+   },
+   "Freezing_flash": {
+      "message": "Freezing flash"
+   },
+   "Grafiti_Spray": {
+      "message": "Grafiti spray"
+   },
+   "Grenade": {
+      "message": "Grenade"
+   },
+   "Hammer": {
+      "message": "Hammer"
+   },
+   "Machine_gun": {
+      "message": "Machine gun"
+   },
+   "Plasma_gun": {
+      "message": "Plasma gun"
+   },
+   "RPG": {
+      "message": "RPG"
+   },
+   "Scifi_weapons": {
+      "message": "Sci-fi weapons"
+   },
+   "Shotgun": {
+      "message": "Shotgun"
+   },
+   "Shuriken": {
+      "message": "Shuriken"
+   },
+   "Spartan_laser": {
+      "message": "Spartan laser"
+   },
+   "Stamp": {
+      "message": "Stamp"
+   },
+   "Street_fight": {
+      "message": "Street fight"
+   },
+   "Throwing_knife": {
+      "message": "Throwing knife"
+   },
+   "appDesc": {
+      "message": "Website Destroyer"
+   },
+   "appName": {
+      "message": "Website Destroyer"
+   },
+   "bg_try_it_text1": {
+      "message": "You are trying"
+   },
+   "bg_try_it_text2": {
+      "message": "from the"
+   },
+   "bg_try_it_text3": {
+      "message": "package"
+   },
+   "content_exit": {
+      "message": "EXIT"
+   },
+   "content_reset": {
+      "message": "RESET"
+   },
+   "content_share": {
+      "message": "FACEBOOK SHARE"
+   },
+   "content_text1": {
+      "message": "\u003Cstrong style=\"font-size:16px\">HowTo\u003C/strong>\u003Cbr />\u003Cbr />Use mouse wheel or key up and down to change stamp image."
+   },
+   "content_text2": {
+      "message": "\u003Cstrong style=\"font-size:16px\">HowTo\u003C/strong>\u003Cbr />\u003Cbr />Use mouse wheel or key up and down to change spray color."
+   },
+   "do_you_like": {
+      "message": "Do you like this extension?"
+   },
+   "fb_mess": {
+      "message": "Hilarious! Destroying websites is fun! Try it:"
+   },
+   "fbshare_text": {
+      "message": "LOL! Destroing websites is really fun. Try it:"
+   },
+   "give5stars": {
+      "message": "Give the destroyer 5-stars in webstore"
+   },
+   "locale": {
+      "message": "en"
+   },
+   "options": {
+      "message": "Options"
+   },
+   "premtext1": {
+      "message": "GET NEW WEAPONS TO WEBSITE DESTROYER"
+   },
+   "premtext2": {
+      "message": "Get it for:"
+   },
+   "premtext3": {
+      "message": "Share on Facebook"
+   },
+   "premtext4": {
+      "message": "This package is active. Go use it."
+   },
+   "save": {
+      "message": "Close"
+   },
+   "settings_saved": {
+      "message": "Settings have been saved"
+   },
+   "share_it": {
+      "message": "Share it!"
+   },
+   "share_this_widget": {
+      "message": "Share this widget"
+   },
+   "stats": {
+      "message": "Allow sending anonymous statistics?"
+   },
+   "title": {
+      "message": "Website Destroyer"
+   },
+   "url_not_work": {
+      "message": "The Website destroyer is not working on Chrome webstore. You don't want to upset Google, don't you? :P"
+   },
+   "weather_options": {
+      "message": "Website Destroyer"
+   }
+}

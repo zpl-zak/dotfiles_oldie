@@ -1,0 +1,77 @@
+/* Options CSS is minimal because Options is set to use Chrome style */
+
+@import url("ui/fade.css");
+
+h3 {
+  display: inline;
+}
+
+section:not(:last-child) {
+  margin-bottom: 32px;
+}
+
+div.heading {
+  border-bottom: 1px solid #333333;
+  padding-bottom: 6px;
+}
+
+div.table {
+  display: table;
+}
+
+div.row  {
+  display: table-row;
+}
+
+div.column {
+  display: table-cell;
+  padding: 0 10px 10px 0;
+}
+
+input[type="number"] {
+  width: 52px;
+}
+
+img {
+  vertical-align: text-bottom;
+}
+
+input[type="image"] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#selection-custom {
+  margin: 10px 0;
+}
+
+#selection-custom-url-textarea {
+  width: 320px;
+}
+
+#selection-custom-pattern-input {
+  width: 120px;
+  margin: 0 4px;
+}
+
+#selection-custom-flags-input {
+  width: 52px;
+}
+
+.key-input {
+  width: 180px;
+}
+
+input[type="image"]:focus {
+  outline: none;
+}
+
+#formerly-urli-label {
+  font: 11px monospace;
+}
+
+/*h3 {
+  font-weight: bold;
+  text-shadow: -1px 0 #DDD, 0 1px #DDD, 1px 0 #DDD, 0 -1px #DDD;
+}
+*/

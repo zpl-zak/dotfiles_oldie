@@ -1,0 +1,134 @@
+{
+   "about": {
+      "message": "About"
+   },
+   "about_contribute": {
+      "message": "If you would like to report a problem or propose a new feature or help translate Flashcontrol, please \u003Ca target=\"_blank\" href=\"https://bitbucket.org/mirrorbrain/flashcontrol/issues/new\">submit a request\u003C/a>."
+   },
+   "about_engine": {
+      "message": "Flashcontrol is built with the \u003Ca href=\"https://adblockplus.org/en/about\" target=\"_blank\">Adblock Plus 1.11\u003C/a> filter engine."
+   },
+   "add_button": {
+      "message": "Add"
+   },
+   "allow_label": {
+      "message": "Allow websites to show Flash content"
+   },
+   "allow_page": {
+      "message": "Allow Flash content here"
+   },
+   "allow_session": {
+      "message": "Allow this site until you exit Chrome"
+   },
+   "allow_site": {
+      "message": "Allow Flash content on $1"
+   },
+   "appearance": {
+      "message": "Appearance"
+   },
+   "browsing": {
+      "message": "Browsing"
+   },
+   "choose_content": {
+      "message": "Let me choose when to allow Flash content (recommended)"
+   },
+   "click_to_block": {
+      "message": "Stop this plugin with Flashcontrol"
+   },
+   "click_to_play": {
+      "message": "Run this plugin with Flashcontrol"
+   },
+   "close_button": {
+      "message": "Close"
+   },
+   "color_label": {
+      "message": "Placeholder color"
+   },
+   "description": {
+      "message": "Stay in control of Flash content"
+   },
+   "devtools_panel": {
+      "message": "Integrate with Chrome DevTools"
+   },
+   "exceptions": {
+      "message": "Exceptions"
+   },
+   "filter_desc": {
+      "message": "Prevent unwanted content from loading."
+   },
+   "filter_label": {
+      "message": "Web filters"
+   },
+   "filter_syntax": {
+      "message": "Flashcontrol uses the Adblock Plus® filter syntax. To learn more about Adblock Plus (ABP) and the syntax visit these links:"
+   },
+   "filters_added": {
+      "message": "Create a filter that allows or blocks content by matching patterns in its address."
+   },
+   "flash_count": {
+      "message": "Show number of Flash Players in the Chrome omnibox"
+   },
+   "flash_logo": {
+      "message": "Flash logo"
+   },
+   "icon_label": {
+      "message": "Placeholder icon"
+   },
+   "install_success": {
+      "message": "Flashcontrol successfully installed!"
+   },
+   "menu_icon": {
+      "message": "Show green omnibox icons for 'Allowed' sites"
+   },
+   "no_logo": {
+      "message": "None"
+   },
+   "omnibox_desc": {
+      "message": "Give sites permission to show Flash content."
+   },
+   "omnibox_label": {
+      "message": "Omnibox menu"
+   },
+   "plugin_logo": {
+      "message": "Plugin logo"
+   },
+   "readonly_label": {
+      "message": "Read-only"
+   },
+   "reblock_buttons": {
+      "message": "Add a 'Close' button to each Flash Player"
+   },
+   "reblock_desc": {
+      "message": "Block content that you don't want to see."
+   },
+   "reblock_label": {
+      "message": "Reblock buttons"
+   },
+   "recommended": {
+      "message": "Recommended security and privacy apps:"
+   },
+   "reset_settings": {
+      "message": "Reset settings"
+   },
+   "rules_label": {
+      "message": "Give websites rules to follow"
+   },
+   "run_content": {
+      "message": "Allow all sites to show Flash content"
+   },
+   "save_button": {
+      "message": "Save all"
+   },
+   "settings": {
+      "message": "Settings"
+   },
+   "syntax_rules": {
+      "message": "Learn more"
+   },
+   "tools": {
+      "message": "Tools"
+   },
+   "whitelist_url": {
+      "message": "Add an address so Flash can load the next time you visit the site."
+   }
+}

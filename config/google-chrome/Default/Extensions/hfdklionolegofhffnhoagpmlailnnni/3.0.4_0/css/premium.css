@@ -1,0 +1,529 @@
+*{
+  margin:0;
+  padding:0;
+  border:none;
+}
+
+body{
+  color:#222;
+  font-family:arial;
+  font-size:14px;
+  background:url('../images/topbg.jpg') repeat center 0;
+}
+
+h1{
+  font-size:20px;
+}
+
+h2{
+  font-size:16px;
+  margin:0 0 10px 0;
+}
+
+h3{
+  font-size:14px;
+}
+
+input,label,select{
+  cursor: pointer;
+}
+
+.none{
+  display: none !important;
+}
+
+.clear{
+  clear:both;
+  display:block;
+  height:0;
+  line-height:0;
+}
+
+#hlavni{
+  min-width:1000px;
+  text-align:left;
+}
+
+#top .in{
+  width:1000px;
+  margin:0 auto;
+  position: relative;
+  text-align: center;
+  background-color:#C6C6C6;
+}
+
+#top .in .package{
+  width:800px;
+  position: absolute;
+  left:100px;
+  top:20px;
+}
+
+/* street package (base css) */
+
+#top .in .package .title{
+  height:80px;
+  line-height:80px;
+  text-align: center;
+  color:#fff;
+  font-size:24px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color:#C6C6C6;
+  overflow: hidden;
+}
+
+#top .in .package .title .name{
+  float:right;
+  height:100px;
+  padding:20px 0 0 0;
+  line-height:40px;
+  width:200px;
+  text-align: center;
+  color:#fff;
+  font-size:20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color:#EE4056;
+}
+
+#top .in .package .weapon{
+  float:left;
+  width:190px;
+  height:205px;
+  text-align: center;
+  padding:15px 5px 0 5px;
+  color:#fff;
+}
+
+#top .in .package .weapon.green{
+  background-color:#2ECC71;
+}
+
+#top .in .package .weapon.orange{
+  background-color:#EF8236;
+}
+
+#top .in .package .weapon.lightblue{
+  background-color:#91C5D9;
+}
+
+#top .in .package .weapon.blue{
+  background-color:#2D72DA;
+}
+
+#top .in .package .weapon.red{
+  background-color:#E75D4B;
+}
+
+#top .in .package .weapon.darkgreen{
+  background-color:#05AB4B;
+}
+
+#top .in .package .weapon img{
+  height:150px;
+}
+
+#top .in .package .weapon h2{
+  margin:15px 0 12px 0;
+  font-size:18px;
+}
+
+#top .in .package .weapon p{
+  height:98px;
+}
+
+#top .in .package .weapon input{
+  background-color: transparent;
+  border:solid 2px #fff;
+  color:#fff;
+  padding:4px 20px 3px 20px;
+  letter-spacing:1px;
+}
+
+#top .in .package .weapon input:hover{
+  background-color:rgba(255,255,255,0.2);
+}
+
+#top .in .package .buy_package{
+  margin:22px 0 0 0;
+  padding:11px 35px;
+  color:#fff;
+  border:solid 2px #FF0000;
+  letter-spacing:1px;
+  font-weight: bold;
+  background-color:#FF0000;
+  font-size:16px;
+}
+
+#top .in .package .buy_package:hover{
+  background-color:#FF1515;
+  border:solid 2px #fff;
+}
+
+#top .in .package .restore{
+  display: inline-block;
+  margin:0 0 0 20px;
+  color:#fff;
+  font-weight: bold;
+}
+
+#top .in .package .restore:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* scifi package (pretizeni) */
+
+#top .in .package .second_line .weapon{
+  width:266px;
+  padding-left:0;
+  padding-right:0;
+}
+
+#top .in .package .second_line .weapon.orange{
+  width:268px;
+}
+
+#top .in .package .second_line .weapon p{
+  height:82px;
+}
+
+/* free package */
+
+#top .in .package#free_weapons .title .name{
+  width:266px;
+}
+
+#top .in .package#free_weapons .weapon{
+  width:133px;
+  padding-left:0;
+  padding-right:0;
+}
+
+#top .in .package#free_weapons .weapon h2{
+  margin:25px 0 10px 0;
+}
+
+#top .in .package#free_weapons .weapon.lightblue{
+  width:135px;
+}
+
+#top .in .package#free_weapons .weapon p{
+  padding:0 5px;
+  height:160px;
+}
+
+#premium_street .share{
+  padding:22px 0;
+  color:#fff;
+  font-size:16px;
+  font-weight: bold;
+}
+
+#premium_street .fb{
+  padding:20px 30px;
+  margin:0 10px;
+  color:#fff;
+  font-weight: bold;
+  background-color:#0E66BC;
+  font-size:16px;
+  text-transform: uppercase;
+  border:solid 2px #0E66BC;
+}
+
+#premium_street .fb:hover{
+  background-color:#036FD9;
+  border:solid 2px #fff;
+}
+
+#premium_street .twt{
+  padding:13px 18px;
+  color:#fff;
+  font-weight: bold;
+  background-color:#1D9FD3;
+  font-size:14px;
+  text-transform: uppercase;
+  border:solid 2px #1D9FD3;
+}
+
+#premium_street .twt:hover{
+  background-color:#00ADF2;
+  border:solid 2px #fff;
+}
+
+/* top package end */
+
+#bottom{
+  width:660px;
+  margin:0 auto;
+  font-size:12px;
+}
+
+#bottom h2{
+  margin:25px 0 15px 0;
+  text-align: center;
+  color:#666;
+  font-size:26px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#bottom .package{
+  float: left;
+  width:220px;
+  height:220px;
+  text-align: center;
+  overflow: hidden;
+  color:#fff;
+  cursor: pointer;
+}
+
+#bottom .package.bg1{
+  background-color:#7F8C8D;
+}
+
+#bottom .package.bg2{
+  background-color:#666666;
+}
+
+#bottom .package.bg3{
+  background-color:#343434;
+}
+
+#bottom .package:hover{
+  background-color:#3498DB !important;
+}
+
+#bottom .package h2{
+  margin:18px 0 20px 0;
+  color:#fff;
+  font-size:20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#bottom .package .weapons{
+  height:66px;
+  text-align: left;
+}
+
+#bottom .package .weapons .wp{
+  float: left;
+  width:80px;
+  font-size:12px;
+  line-height:9px;
+  margin:0 0 10px 12px;
+  padding:0 0 0 6px;
+  border-left:solid 9px #fff;
+}
+
+#bottom .package .buy_package{
+  margin:20px 0 12px 0;
+  padding:5px 10px;
+  color:#444;
+  border:solid 1px #fff;
+  font-weight: bold;
+  background-color:#e5e5e5;
+  font-size:12px;
+  text-transform: uppercase;
+}
+
+#bottom .package .buy_package:hover{
+  background-color:#fff;
+}
+
+#bottom .package .restore:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#bottom .package .fb{
+  margin:5px 0 0 0;
+  width:140px;
+  padding:5px 0;
+  color:#fff;
+  border:solid 1px #16416A;
+  font-weight: bold;
+  background-color:#2C5379;
+  font-size:12px;
+  text-transform: uppercase;
+}
+
+#bottom .package .fb:hover{
+  background-color:#16416A;
+}
+
+#bottom .package .twt{
+  margin:5px 0 0 0;
+  width:140px;
+  padding:5px 0;
+  color:#fff;
+  border:solid 1px #0076A5;
+  font-weight: bold;
+  background-color:#0089C0;
+  font-size:12px;
+  text-transform: uppercase;
+}
+
+#bottom .package .twt:hover{
+  background-color:#0076A5;
+}
+
+/* bottom end */
+
+#arrow_left{
+  display: block;
+  position: absolute;
+  left:10px;
+  top:250px;
+  width:62px;
+  height:97px;
+  cursor: pointer;
+  background:url('../images/arrow_left.png') no-repeat 0 0;
+}
+
+#arrow_left:hover{
+  background-position:0 -97px;
+}
+
+#arrow_right{
+  display: block;
+  position: absolute;
+  right:10px;
+  top:250px;
+  width:62px;
+  height:97px;
+  cursor: pointer;
+  background:url('../images/arrow_right.png') no-repeat 0 0;
+}
+
+#arrow_right:hover{
+  background-position:0 -97px;
+}
+
+#popup_bg{
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100000000;
+  background-color:rgba(0,0,0,0.7);
+}
+
+#popup_bg #reg_zone{
+  margin:50px auto 0 auto;
+  padding:25px 20px 35px 20px;
+  width:260px;
+  position: relative;
+  background-color:#fff;
+  border-radius:5px;
+}
+
+#popup_bg #reg_zone h2{
+  padding:0 0 10px 0;
+  text-align: center;
+  font-size:18px;
+}
+
+#popup_bg .close{
+  position:absolute;
+  right:10px;
+  top:4px;
+  color:#000;
+  font-weight:bold;
+  cursor: pointer;
+}
+
+#popup_bg #reg_ok{
+  display: inline-block;
+  cursor:pointer;
+  width:249px;
+  height:50px;
+  margin:0 0 0 5px;
+  text-indent:-99999px;
+  background: url(../img/premium_button.png) no-repeat 0 0;
+  outline: none
+}
+
+#popup_bg #reg_ok:hover{
+  background-position:0 -50px;
+}
+
+#popup_bg input[type=text],input[type=password]{
+  display: inline-block;
+  cursor:pointer;
+  padding:10px 20px;
+  margin:0 0 25px 10px;
+  width:195px;
+  height:27px;
+  line-height:27px;
+  font-size:16px;
+  text-align:left;
+  color:#444;
+  background-color:#fff;
+  border:solid 1px #CBCBCB;
+  border-radius:7px;
+  outline: none
+}
+
+#error{
+  position: absolute;
+  left:100px;
+  top:2px;
+  padding:5px 10px;
+  background-color:#fff;
+  color:#E50000;
+  font-weight:bold;
+  z-index: 9999999999;
+}
+
+#foot{
+  padding:30px 0 10px 0;
+  text-align: center;
+}
+
+#foot span{
+  cursor: pointer;
+  font-size:14px;
+  font-weight:normal;
+}
+
+#foot span:hover{
+  text-decoration: underline;
+}
+
+#foot span.later{
+  color:#46A527;
+  margin:0 12px 0 0;
+}
+
+#top .in .active_mess{
+  display: inline-block;
+  color:#fff;
+  font-weight: bold;
+  font-size:20px;
+  margin-top:33px;
+  text-transform: uppercase;
+  letter-spacing:2px;
+}
+
+#bottom .active_mess{
+  display: inline-block;
+  color:#000;
+  font-weight: bold;
+  font-size:15px;
+  margin-top:10px;
+  text-transform: uppercase;
+}
+
+#bottom .bg1 .active_mess{
+  margin-top:25px;
+}
+
+.active_mess:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}

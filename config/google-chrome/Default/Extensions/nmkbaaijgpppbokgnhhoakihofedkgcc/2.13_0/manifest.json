@@ -1,0 +1,31 @@
+{
+   "background": {
+      "page": "forge.html"
+   },
+   "browser_action": {
+      "default_icon": "src/img/favicon.png",
+      "default_popup": "src/popup.html",
+      "default_title": "MuteTab"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "css": [  ],
+      "js": [ "forge/app_config.js", "forge/all.js", "src/js/vendor/jquery.js", "src/js/shared/core.js", "src/js/shared/operationssupported.js", "src/js/vendor/elementclassutil.js", "src/js/contentscript/operation.js", "src/js/contentscript/objectembed.js", "src/js/contentscript/messaging_contentscript.js", "src/js/contentscript/detectaudiosources.js", "src/js/contentscript/contentscript.js", "src/js/contentscript/init.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_start"
+   } ],
+   "content_security_policy": "script-src 'unsafe-eval'; object-src 'self'",
+   "description": "Helps narrow down which tab that sound is coming from, and often lets you stop or pause it",
+   "icons": {
+      "128": "src/img/favicon.png",
+      "16": "src/img/favicon.png",
+      "48": "src/img/favicon.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDGPNENfZwJwILC3fvBy2Ka7H/oGAPgoyDKzE/PPp/whuevqNI4l6PhKou6cPTSLbUTtr6mB64vsi8ESY+ixqhqfUD7nkvb1V7WBoDWPY5HUH/xkDL8fAAUsMzptZFrG4aft6Bb1wwNrNDjIgiaenE/73u3boECLd9Wn7Fy7t0MRwIDAQAB",
+   "manifest_version": 2,
+   "name": "MuteTab",
+   "permissions": [ "http://*/*", "contextMenus", "chrome://favicon/", "https://*/*", "http://*/*", "https://*/*", "tabs" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.13",
+   "web_accessible_resources": [ "src/js/favicon.png" ]
+}

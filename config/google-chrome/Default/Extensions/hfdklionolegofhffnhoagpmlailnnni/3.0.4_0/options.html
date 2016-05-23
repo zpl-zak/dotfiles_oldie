@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Options</title>
+  <link rel="stylesheet" type="text/css" href="css/options.css" />
+  <script type='text/javascript' src='jquery.min.js'></script>  
+  <script type='text/javascript' src='config.js'></script>
+  <script type="text/javascript" src="options.js"></script>
+</head>
+
+<body>
+<div id="hlavni">                 
+
+<div id="leftpanel">
+  <h2 id="left_h2">
+    <img src="img/icon32.png" alt="" />
+    <span class="i18n" i18n="options"></span>
+  </h2>
+  <ul>
+    <li rel="blok_general" class="active i18n" i18n="weather_options">General</li>
+    <!--<li rel="blok_about">About</li>!-->
+  </ul>
+  <div class="saved none i18n" i18n="settings_saved"></div>
+</div>
+  
+  
+<h1 id="h1"></h1>
+<hr />   
+
+  <div id="stats">
+    <input id="stats_check" type="checkbox" name="" /> &nbsp;
+    <label id="stats_label" for="stats_check" class="i18n" i18n="stats"></label>
+  </div>
+  
+  <!--
+  <hr />
+  <div id="update_notify">
+    <input id="update_notify_check" type="checkbox" name="" /> &nbsp;
+    <label for="update_notify_check">Allow notifications for new features</label>
+  </div>
+  -->
+  
+<hr />
+<input type="button" id="close" value="" class="i18n" i18n="save" />
+
+</div>
+</body>
+
+</html>

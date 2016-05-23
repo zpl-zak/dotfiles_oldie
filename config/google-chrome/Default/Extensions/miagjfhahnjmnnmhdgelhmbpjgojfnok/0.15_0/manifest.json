@@ -1,0 +1,32 @@
+{
+   "background": {
+      "persistent": false,
+      "scripts": [ "scripts/background.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "19": "images/icon-19.png",
+         "38": "images/icon-38.png"
+      },
+      "default_title": "Just Do It"
+   },
+   "content_scripts": [ {
+      "css": [ "styles/main.css" ],
+      "js": [ "bower_components/jquery/dist/jquery.min.js" ],
+      "matches": [ "http://*/*", "https://*/*" ]
+   } ],
+   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+   "default_locale": "en",
+   "description": "__MSG_appDescription__",
+   "icons": {
+      "128": "images/icon-128.png",
+      "16": "images/icon-16.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5nP+k5qYy+Cw9iyKN/anY29z4GXRSGAxxpg/pCybMts8yEioxie+PQlcwh2Qa1An2BQScyKk54UhUjHlM4V7ebfedPZ5XYTU4Lh8WQI9WQ/Y21eccycgS0EuYsJsvnEd5MO7wCbzlmp6CdpiiSWgplpmWsobn6yGfTcNxJIo3xaID64wCLfrHeA7kV+b5H2WjDDs+O+ZjjcjH8U7lnzXnii38loy5PmURSv+QLHVAZizXMJkZWNNRkidG78Nku7umfA8Rd0d1vzK/nvYPWvkCaCcw3P94D317SjZvWrXrxRvN/nl67jN3HMGft3MoZDUtp5YkfFeBA3P43S/yGk13QIDAQAB",
+   "manifest_version": 2,
+   "name": "__MSG_appName__",
+   "permissions": [ "http://*/*", "https://*/*", "tabs", "storage", "activeTab" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.15",
+   "web_accessible_resources": [ "assets/*", "images/*", "styles/main.css" ]
+}

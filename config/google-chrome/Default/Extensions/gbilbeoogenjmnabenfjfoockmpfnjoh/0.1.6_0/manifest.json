@@ -1,0 +1,34 @@
+{
+   "background": {
+      "page": "lib/chrome/background.html"
+   },
+   "browser_action": {
+      "default_icon": "data/icons/16.png",
+      "default_popup": "data/popup/popup.html",
+      "default_title": "Night Mode Pro"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "data/content_script/inject.js", "data/content_script/chrome/chrome.js" ],
+      "match_about_blank": true,
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_start"
+   } ],
+   "description": "Switch to night mode and the display is much easier on your eyes!",
+   "icons": {
+      "128": "data/icons/128.png",
+      "16": "data/icons/16.png",
+      "32": "data/icons/32.png",
+      "48": "data/icons/48.png",
+      "64": "data/icons/64.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1zrp7bZNpOqQpF+CJCUJ5B0Ft/XpDzUARSnjXHT/4Ma4D16U/yE7h10cSP9pqOOoAY5MmlglRCEgZ2MfSV/eYDXpohKVSTuFG/JTPxnnzJmZw1aV9r/rZw+X17k9W53v6/opNES6B3XKM+2FiR7PBM5+wl3t5seHkiay6A3rorEyG1gViYi8gmnJpHfvTXMwWj5sclZRObPrvrqcVcCK2NFE4a+kCSmHRZs7EtRnHgSnSVKR/MSqJ5ilimY0iMAPKjG11S/9JsFFUQc1AwcwgiYi9dQg8H4q7r35wZbU24Mlq2dPUtmbgf5Fe1XJ9wlKEjQ6NbixCHP9XTWHbS0DCQIDAQAB",
+   "manifest_version": 2,
+   "name": "Night Mode Pro",
+   "options_page": "data/options/options.html",
+   "permissions": [ "tabs", "storage", "\u003Call_urls>" ],
+   "short_name": "nightmode",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.1.6",
+   "web_accessible_resources": [ "data/content_script/*" ]
+}

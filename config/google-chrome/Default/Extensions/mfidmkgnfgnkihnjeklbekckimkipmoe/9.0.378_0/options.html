@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="options.css"/>
+    </head>
+    <body>
+        <nav class="tabs">
+            <ol>
+                <li class="tab" i18n="settings"></li>
+                <li class="tab" i18n="exceptions"></li>
+                <li class="tab" i18n="about"></li>
+            </ol>
+        </nav>
+        <main class="panels">
+            <section id="settings" class="panel">
+                <div class="toolbar"><button id="reset" i18n="reset_settings"></button></div>
+            </section>
+            <section id="exceptions" class="panel">
+                <h3 i18n="allow_label"></h3>
+                <span class="settings-row" i18n="whitelist_url"></span>
+                <div class="input-box">
+                    <input>
+                    <button i18n="add_button"></button>
+                </div>
+                <h3 i18n="rules_label"></h3>
+                <div class="settings-row">
+                    <span i18n="filters_added"></span>
+                    <a href="#" i18n="syntax_rules"></a>
+                </div>
+                <textarea></textarea>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="read_only">
+                        <span i18n="readonly_label"></span>
+                    </label>
+                </div>
+                <div class="toolbar">
+                    <button i18n="save_button"></button>
+                </div>
+            </section>
+            <section id="about" class="panel">
+                <div class="extension-version"></div>
+                <div class="flash-version"></div>
+                <div i18n="about_engine"></div>
+                <div i18n="about_contribute"></div>
+            </section>
+        </main>
+        <dialog id="firstrun-dialog">
+            <h3 i18n="install_success"></h3>
+            <div class="intro">
+                <div class="info-column">
+                    <h3 i18n="omnibox_label"></h3>
+                    <div i18n="omnibox_desc"></div>
+                    <img height=150 src="skin/featureA.svg"></img>
+                </div>
+                <div class="info-column">
+                    <h3 i18n="reblock_label"></h3>
+                    <div i18n="reblock_desc"></div>
+                    <img height=150 src="skin/featureB.svg"></img>
+                </div>
+                <div class="info-column">
+                    <h3 i18n="filter_label"></h3>
+                    <div i18n="filter_desc"></div>
+                    <img height=150 src="skin/featureC.svg"></img>
+                </div>
+            </div>
+            <div class="gray-bar">
+                <div i18n="recommended"></div>
+                <a href="https://chrome.google.com/webstore/detail/zenmate/fdcgdnkidjaadafnichfpabhfomcebme" target="_blank">
+                    <img src="skin/zenmate.png" width=176 height=46>
+                </a>
+            </div>
+            <div class="toolbar">
+                <button i18n="close_button" autofocus></button>
+            </div>
+        </dialog>
+        <dialog id="syntax-dialog">
+            <div i18n="filter_syntax"></div>
+            <ul>
+                <li><a href="https://adblockplus.org">https://adblockplus.org</a></li>
+                <li><a href="https://adblockplus.org/en/filter-cheatsheet">https://adblockplus.org/en/filter-cheatsheet</a></li>
+            </ul>
+            <div class="toolbar">
+                <button i18n="close_button" autofocus></button>
+            </div>
+        </dialog>
+        <script src="components.js"></script>
+        <script src="global.js"></script>
+        <script src="options.js"></script>
+    </body>
+</html>

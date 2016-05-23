@@ -1,0 +1,43 @@
+{
+   "background": {
+      "persistent": false,
+      "scripts": [ "libs/compat.js", "libs/info.js", "libs/adblockplus.js", "libs/punycode.js", "libs/publicSuffixList.js", "libs/sha1.js", "libs/jsbn.js", "libs/rsa.js", "components.js", "matcher.js", "patch.js", "background.js" ]
+   },
+   "browser_action": {
+      "default_icon": "skin/48.png",
+      "default_popup": "popup.html",
+      "default_title": "Flashcontrol"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "css": [ "content.css" ],
+      "match_about_blank": true,
+      "matches": [ "*://*/*" ],
+      "run_at": "document_start"
+   }, {
+      "all_frames": true,
+      "js": [ "content.js" ],
+      "match_about_blank": true,
+      "matches": [ "*://*/*" ]
+   } ],
+   "default_locale": "en",
+   "description": "__MSG_description__",
+   "devtools_page": "devtools.html",
+   "icons": {
+      "128": "skin/128.png",
+      "16": "skin/16.png",
+      "48": "skin/48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn+9sWtNAr67qK2Ybh50R8JiYhMfKITff8t4QFCylt0qvyy6Nmmx1uHTVhjiJCzCMYXYnYoAHpv8eN4stdtHl1pJW0nIgv6jbT29Yd24lqSovDlAmxfctJHJWtY0AMk6CyxpeTHlVWkzT5LJoUh12skIGjxxclY6qaR1LmqWcx9wIDAQAB",
+   "manifest_version": 2,
+   "minimum_chrome_version": "49",
+   "name": "Flashcontrol",
+   "options_ui": {
+      "chrome_style": true,
+      "page": "options.html"
+   },
+   "permissions": [ "tabs", "*://*/*", "storage" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "9.0.378",
+   "web_accessible_resources": [ "skin/19.png", "skin/flashlogo.svg", "skin/pluginlogo.svg" ]
+}

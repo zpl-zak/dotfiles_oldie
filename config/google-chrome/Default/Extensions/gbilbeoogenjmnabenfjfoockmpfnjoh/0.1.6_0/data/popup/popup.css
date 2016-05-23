@@ -1,0 +1,95 @@
+html {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background-color: white !important;
+}
+
+body {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  width: 300px;
+  height: 298px;
+  font-size: 16px;
+  cursor: defualt;
+  overflow: hidden;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  background: #404040 url(texture.png) repeat center center;
+}
+
+table {
+  width: 100%;
+  border-spacing: 10px;
+}
+
+body, table {
+  font-family: Helvetica, Arial, 'lucida grande', ahoma, verdana, arial, sans-serif;
+}
+
+tr td {
+  border: 0;
+  margin: 0;
+  padding: 0;  
+  width: auto;
+  color: black;
+  text-align: center;
+  vertical-align: middle;
+  transition: 0.3s ease all;
+  -moz-transition: 0.3s ease all;
+  -webkit-transition: 0.3s ease all;
+}
+
+tr td[type='options'], tr td[type='support'], tr td[type='whitelist'] {
+  color: black;
+  height: 18px;
+  cursor: pointer;
+  font-size: 12px;
+  background: white url(texture.png) repeat center center;
+}
+
+tr td[type='options']:hover, tr td[type='support']:hover, tr td[type='whitelist']:hover {
+  background: #555 url(texture.png) repeat center center;
+}
+
+tr td[type='on'] {
+  height: 131px;
+  cursor: pointer;
+  background: url(on.png) no-repeat center center;
+}
+
+tr td[type='off'] {
+  height: 131px;
+  cursor: pointer;
+  background: url(off.png) no-repeat center center;
+}
+
+tr td[active='true'] {
+  border: solid 2px white;
+}
+
+tr td[active='false'] {
+  border: solid 2px transparent;
+}
+
+#info-td {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 40px;
+  color: black;
+  font-weight: bold;
+  background: white url(texture.png) repeat center center;
+}
+
+#dimmer-slider {
+  width: 260px;
+  cursor: grab;
+  cursor: -webkit-grab;
+}
+
+#dimmer-slider:hover {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}

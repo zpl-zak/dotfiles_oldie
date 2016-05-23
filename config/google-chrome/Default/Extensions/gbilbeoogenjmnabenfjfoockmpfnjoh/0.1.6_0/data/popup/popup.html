@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="popup.css"/>
+  </head>
+  <body>
+    <table style="table-layout: fixed">
+      <tbody>
+        <tr>
+          <td type="on" id="lights-on"></td>
+          <td type="off" id="lights-off"></td>
+        </tr>
+        <tr>
+          <td colspan=2>
+            <input id="dimmer-slider" type="range" min="0" max="100" step="1"></input>
+          </td>
+        </tr>
+        <tr><td colspan=2 id="info-td"></td></tr>
+        <tr>
+          <td colspan=2 id="options" type="options">Open Options Page to View the White-list Table</td>
+        </tr>
+        <tr>
+          <td id="whitelist" type="whitelist">White-list This Page</td>
+          <td id="support" type="support">Open Support Page</td>
+        </tr>
+      </tbody>
+    </table>
+    <script src="chrome/chrome.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

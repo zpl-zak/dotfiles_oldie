@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Options - Night Mode Pro</title>
+    <link rel="icon" type="image/png" href="../icons/16.png">
+    <link rel="stylesheet" type="text/css" href="options.css">
+  </head>
+  <body class="flex">
+    <div id="header" class="flex">
+      <div>
+        <span><a href="http://mybrowseraddon.com/night-mode.html" target="_blank">Night Mode Pro</a></span><br/>
+        <span class="note">Night Mode Pro is a browser extension to change the screen's luminosity (Day/Night modes) when you surf the Internet. Besides, you can easily adjust the screen's brightness.</span>
+      </div>
+    </div>
+    <span id="information-span">
+      Night Mode Pro protects your eyes by dimming the light when the environment is dark or vise-versa. In order to add a website to the white-list table, enter the website address in the input field below and click on (+) sign or press enter. Please note: the address should be a valid url (i.e. https://www.google.com/), otherwise it won't be added to the list.
+    </span>
+    <div id="content" class="flex">
+      <table style="padding: 10px 15px;">
+        <tbody>
+          <tr>
+            <td id="input-field-td">
+              <input id="input-field" title="Enter a Website to White-list (Exclude it from Night Mode)" placeholder="Enter a Website to White-list (Exclude it from Night Mode)"></input>
+            </td>
+            <td id="input-field-add" title="Add Website to the White-list"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="website-list">
+        <table id="white-list-table" style="border-spacing: 7px"></table>
+      </div>
+    </div>
+    <script src="chrome/chrome.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

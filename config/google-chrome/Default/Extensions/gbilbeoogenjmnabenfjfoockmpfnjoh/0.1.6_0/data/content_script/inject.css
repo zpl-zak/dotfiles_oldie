@@ -1,0 +1,39 @@
+.btn,
+.img, 
+.logo,
+.photo,
+.button, 
+[role='button'],
+input[type='checkbox'],
+[style*='background:url'],
+[style*='background-image'],
+img, video, object, embed, button, canvas {
+  filter: invert(100%) !important;
+  -webkit-filter: invert(100%) !important;
+}
+
+* {
+  font-smoothing: antialiased !important;
+  -moz-font-smoothing: antialiased !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+:-webkit-full-screen img,
+:-webkit-full-screen video,
+:-webkit-full-screen object,
+:-webkit-full-screen canvas,
+:-webkit-full-screen embed,
+:-webkit-full-screen button  {
+  filter: invert(0%) !important;
+  -webkit-filter: invert(0%) !important;
+}
+
+:-moz-full-screen img,
+:-moz-full-screen video,
+:-moz-full-screen object,
+:-moz-full-screen canvas,
+:-moz-full-screen embed,
+:-moz-full-screen button  {
+  filter: invert(0%) !important;
+  -webkit-filter: invert(0%) !important;
+}

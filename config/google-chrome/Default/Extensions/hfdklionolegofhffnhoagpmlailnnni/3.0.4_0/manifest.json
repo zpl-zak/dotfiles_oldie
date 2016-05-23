@@ -1,0 +1,28 @@
+{
+   "background": {
+      "page": "background.html"
+   },
+   "content_scripts": [ {
+      "css": [ "content.css" ],
+      "js": [ "jquery.min.js", "preloader.js", "jquery.mousewheel.min.js" ],
+      "matches": [ "\u003Call_urls>" ]
+   } ],
+   "content_security_policy": "script-src 'self' https://*.facebook.net https://*.facebook.com https://*.twitter.com https://*.google.com https://*.google-analytics.com https://*.doubleclick.net; object-src 'self'",
+   "default_locale": "en",
+   "description": "Best and only REAL destroyer on the internet! Webpage can't stand a chance.",
+   "icons": {
+      "128": "img/icon128.png",
+      "16": "img/icon16.png",
+      "19": "img/icon19.png",
+      "32": "img/icon32.png",
+      "48": "img/icon48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDm2xxNWgr+TXAsqu0AZ1lgeLYPr4Z3/nRKhA9VXc/SMUjzA4SKEuqK3qVUgXnXFNbpRTdxQtNDo98N+rWrQaEGIy6bsBQYuYu2tmYCuAOd4n0ZJ0ReBdS0sqhP8zWhMLOH42/lMYKrt3IKsDipGPiblaB42zWOQQakmhFXJkdTUwIDAQAB",
+   "manifest_version": 2,
+   "name": "Website Destroyer",
+   "options_page": "options.html",
+   "permissions": [ "tabs", "\u003Call_urls>", "cookies", "management", "notifications", "contextMenus", "webRequest" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "3.0.4",
+   "web_accessible_resources": [ "img/*", "images/*", "audio/*" ]
+}

@@ -1,0 +1,18 @@
+{
+   "app": {
+      "launch": {
+         "web_url": "http://www.2pg.com/game/happy-wheels/play/"
+      },
+      "urls": [ "http://www.2pg.com/game/happy-wheels/play/" ]
+   },
+   "description": "Play Happy Wheels Game",
+   "icons": {
+      "128": "128.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDRGPCU5PzB1FplbHHbhJNohTDvuJGQTUbOhiQt+d28s0u4NHPzl9alMp7VVg7ohXeDdqbgFO1o2XKPjV6laX/QLE+DnNn80NbpZPAbxYC1CyPZaQLKDprxXFDpY74duRGby0XNbuYrkUq3boN/DDBwDh2uXbFXZCr1RC2zOQWbtQIDAQAB",
+   "manifest_version": 2,
+   "name": "Happy Wheels",
+   "permissions": [ "unlimitedStorage" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.0"
+}

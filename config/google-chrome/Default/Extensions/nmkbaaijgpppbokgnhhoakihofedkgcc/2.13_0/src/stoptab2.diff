@@ -1,0 +1,418 @@
+diff --git a/README.md b/README.md
+index 55e9530..25620d1 100644
+--- a/README.md
++++ b/README.md
+@@ -1,7 +1,7 @@
+ MuteTab Chrome extension
+ =======
+ 
+-MuteTab is a Chrome extension that helps you manage the sound coming from tabs in Google Chrome. It helps you to narrow down which tab(s) are making sounds and provides browser-wide management of tab muting (pausing YouTube, HTML5 Video/Audio, and QuickTime and stopping others), including automatically pausing/stopping many background tabs.  It does not detect web audio.
++MuteTab is a Chrome extension that helps you manage the sound coming from tabs in Google Chrome. It helps you to narrow down which tab(s) are making sounds and allows stopping them (and pausing if YouTube, HTML5 Video/Audio, or QuickTime), including an option to do so automatically with background tabs.  It does not detect web audio.
+ 
+ ###Documentation/download
+ http://www.mutetab.com/
+@@ -36,3 +36,4 @@ python mergejson/mergejson.py development/chrome/manifest.json src/mutetab_chrom
+ 
+ You can run it by going to chrome://extensions, checking Developer mode, clicking "Load unpacked extension...", and choosing the development/chrome folder.
+ 
++If you want to donate, you can do so ([here](http://www.mutetab.com/donate.html)).
+\ No newline at end of file
+diff --git a/config.json b/config.json
+index ffd448f..2443bb6 100644
+--- a/config.json
++++ b/config.json
+@@ -1,15 +1,15 @@
+ {
+ 	"config_version": "2",
+-	"name": "MuteTab",
++	"name": "StopTab",
+ 	"author": "Jared Sohn",
+-	"version": "2.11",
++	"version": "2.3",
+ 	"platform_version": "v1.4",
+-	"description": "Helps narrow down which tab that sound is coming from, browser-wide granular sound management",
++	"description": "Helps narrow down which tab that sound is coming from and often lets you stop or pause it",
+ 	"modules": {
+ 		"button": {
+-			"default_popup": "js/popup.html",
++			"default_popup": "popup.html",
+ 			"default_title": "MuteTab",
+-			"default_icon": "js/favicon.png"
++			"default_icon": "img/favicon.png"
+ 		},
+ 		"activations": [
+ 		{ 
+@@ -19,13 +19,14 @@
+ 				"js/lib/jquery.js",
+ 				"js/shared/core.js",
+ 				"js/shared/operationssupported.js", 
+-		                "js/lib/elementclassutil.js",
++		        "js/lib/elementclassutil.js",
+ 				"js/contentscript/operation.js",
+ 				"js/contentscript/objectembed.js",
+-		                "js/contentscript/messaging_contentscript.js",
++		        "js/contentscript/messaging_contentscript.js",
+ 				"js/contentscript/detectaudiosources.js",
+ 				"js/contentscript/contentscript.js",
+-		                "js/contentscript/init.js"],
++		        "js/contentscript/init.js"
++		    ],
+ 	        "styles": [],
+ 	        "all_frames": true
+ 		}],
+--- a/js/background/contextmenus.js
++++ b/js/background/contextmenus.js
+@@ -11,9 +11,7 @@ var _contextmenus = function(){
+ 	var _currentTabContextId;
+ 	var _otherTabsContextId;
+ 	var _allTabsContextId;
+-	var _optionsContextId;
+ 	var _operatorForContextMenuDict = {};
+-	var _seperatorContextId;
+ 	var _msgContextId;
+ 	var _muteAllContextId;
+ 	var _muteOthersContextId;
+@@ -25,17 +23,6 @@ var _contextmenus = function(){
+ 				"title": "(Only one dialog at a time)",
+ 				"contexts": ["page"]
+ 			});
+-
+-			_separatorContextId = chrome.contextMenus.create({
+-				"type": "separator",
+-				"contexts": ["page"]
+-			});
+-
+-			_optionsContextId = chrome.contextMenus.create({
+-				"title": "Options",
+-				"contexts": ["page"],
+-				"onclick": optionsContextMenuClickHandler
+-			});
+ 		});
+ 	};
+ 
+@@ -68,17 +55,6 @@ var _contextmenus = function(){
+ 					"onclick": muteOthersContextMenuClickHandler
+ 				});
+ 
+-				_separatorContextId = chrome.contextMenus.create({
+-					"type": "separator",
+-					"contexts": ["page"]
+-				});
+-
+-				_optionsContextId = chrome.contextMenus.create({
+-					"title": "Options",
+-					"contexts": ["page"],
+-					"onclick": optionsContextMenuClickHandler
+-				});
+-
+ 				var operationsArray;
+ 				var includedMuteUnsafeOperation;
+ 
+@@ -178,11 +154,6 @@ var _contextmenus = function(){
+ 		}
+ 	};
+ 
+-	var optionsContextMenuClickHandler = function(info, tab)
+-	{
+-		window.open(chrome.extension.getURL("/options.html"));
+-	};
+-
+ 	var muteAllContextMenuClickHandler = function(info, tab)
+ 	{
+ 		//console.log("muteallcontextmenuclickhandler")
+diff --git a/js/background/displayutil.js b/js/background/displayutil.js
+index 6f5d9f3..3ec9aa3 100644
+--- a/js/background/displayutil.js
++++ b/js/background/displayutil.js
+@@ -135,9 +135,9 @@ GetAudioSourceTypeImageUrl = function(audioSourceType)
+ {
+ 	var fileName = "";
+ 	if ((audioSourceType === 'undefined') ||(typeof(audioSourceType) === 'undefined'))
+-		fileName = chrome.extension.getURL('src/js/popup/audiosourcetypes/unknown.png');
++		fileName = chrome.extension.getURL('src/img/audiosourcetypes/unknown.png');
+ 	else {
+-		fileName = chrome.extension.getURL('src/js/popup/audiosourcetypes/' + audioSourceType.toLowerCase());
++		fileName = chrome.extension.getURL('src/img/audiosourcetypes/' + audioSourceType.toLowerCase());
+ 		if ((audioSourceType.toLowerCase() === 'dailymotion') || (audioSourceType.toLowerCase() === 'realplayer'))
+ 			fileName += '.jpg';
+ 		else
+diff --git a/js/background/injectjs.js b/js/background/injectjs.js
+index ebae899..aa34693 100644
+--- a/js/background/injectjs.js
++++ b/js/background/injectjs.js
+@@ -1,6 +1,6 @@
+ // Wraps injecting JavaScript into a tab with some tabid
+ //
+-// Had been used to have MuteTab work on tabs open prior to installing extension (but broken in 9/13)
++// Had been used to have StopTab work on tabs open prior to installing extension (but broken in 9/13)
+ 
+ var InjectJS = function(js, tabid, callback, callbackparam) {
+   var details = {};
+diff --git a/js/contentscript/operation.js b/js/contentscript/operation.js
+index 878d7bb..a644182 100644
+--- a/js/contentscript/operation.js
++++ b/js/contentscript/operation.js
+@@ -320,7 +320,7 @@ function Block(audioSource, selector)
+ 
+   //TODO: allow clicking to unblock like you can with flashblock
+ 
+-  var iconUrl = chrome.extension.getURL("src/js/favicon.png");
++  var iconUrl = chrome.extension.getURL("src/img/favicon.png");
+   var blockDiv =  '<div id="' + audioSource.Id + '_block" style="display: block; text-align: center; width: ' + 1 * width + 'px; height: ' + 1 * height + 'px; top: auto; left: auto; position: static; ">';
+   blockDiv +=     '<div style="-webkit-transition-property: opacity; -webkit-transition-duration: 150ms; -webkit-transition-timing-function: ease-out; -webkit-transition-delay: initial; text-align: left; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); width: 100%; height: 100%; background-color: rgba(193, 217, 244, 0.496094); background-image: url(' + iconUrl + '); background-size: 50px 50px; opacity: 1; background-repeat: no-repeat;  "></div>';
+   blockDiv +=     '</div>';
+diff --git a/js/options.js b/js/options.js
+index f78d0ac..b330262 100644
+--- a/js/options.js
++++ b/js/options.js
+@@ -77,35 +77,9 @@ MigrateOptions = function()
+ 
+   var now = new Date().getTime();
+ 
+-/*
+-  if (null === localStorage.getItem('welcomed'))
+-  {
+-    localStorage.setItem("welcomed", now);
+-
+-    chrome.tabs.create({
+-        'url': "http://www.mutetab.com/welcome.html"
+-    }, function(tab) {
+-
+-    });
+-  }
+-*/
+-//  forge.prefs.get("welcomed", _onCheckWelcomed, function() { _onCheckedWelcomed(null); });
+   forge.prefs.get("install_time", _onCheckedInstall, function() { _onCheckedInstall(null); });
+ };
+ 
+-/*_onCheckWelcomed = function(val)
+-{
+-  if (val === null)
+-  {
+-    chrome.tabs.create({
+-        'url': "http://www.mutetab.com/welcome.html"
+-    }, function(tab) {
+-    });
+-    var now = new Date().getTime();
+-    _savePref("welcomed", now);
+-  }
+-};*/
+-
+ _onCheckedInstall = function(val)
+ {
+   if (val === null)
+diff --git a/js/optionsui.js b/js/optionsui.js
+index 17fce1e..87a028f 100644
+--- a/js/optionsui.js
++++ b/js/optionsui.js
+@@ -8,21 +8,14 @@ document.addEventListener('DOMContentLoaded', function () {
+ });
+ 
+ function loadOptions(options) {
+-//  document.getElementById("automutemode").value = options.AutoMuteMode;
+   document.getElementById("automute_exclusions").value = options.AutomuteExclusionsText;
+   document.getElementById("manuallydetected").value = options.UndetectedText;
+-//  document.getElementById("ShowFlashOperationsCheckBox").checked = options.ShowMultiFrameFlashOperations;
+   document.getElementById("ForceScriptingCheckBox").checked = options.ForceScripting;
+ 
+   Options = options;
+ }
+ 
+ function saveOptions() {
+-//  Options.AutoMuteBackground = document.getElementById("AutomuteBackgroundCheckBox").checked ? 'true' : 'false';
+-//  Options.NoDestructiveAutoMute = document.getElementById("NoDestructiveAutoMuteCheckBox").checked ? 'true' : 'false';
+-
+-//  Options.AutoMuteMode = document.getElementById("automutemode").value;
+-//  Options.ShowMultiFrameFlashOperations = document.getElementById("ShowFlashOperationsCheckBox").checked ? true : false;
+   Options.ForceScripting = document.getElementById("ForceScriptingCheckBox").checked ? true : false;
+ 
+   Options.AutomuteExclusionsText = document.getElementById("automute_exclusions").value;
+@@ -31,60 +24,14 @@ function saveOptions() {
+   var bg = chrome.extension.getBackgroundPage();
+   bg.SaveOptions(Options);
+ 
+-  //updateBackground();
+-
+   alert('Options saved.');
+ }
+ 
+-/*
+-function updateBackground()
+-{
+-  var bg = chrome.extension.getBackgroundPage();
+-  var showMuteStatusIconChanged = (bg.Options.ShowMuteStatusIcon != (localStorage["showMuteStatusIcon"] == 'true'));
+-  bg.InitOptions(bg.Options);
+-  
+-  if (showMuteStatusIconChanged)
+-  {
+-      var request = new Object();
+-      request.Operation = "Update";
+-      request.TabId = bg.ALLTABS;
+-    
+-      chrome.extension.sendRequest(request, function(response) {
+-      });
+-    
+-    //GetAllTabIds(_updateIcons);    
+-    //TODO: send request to background to updateall 
+-  }
+-}*/
+-
+ //This just updates the UI instead of changing values.
+ function restoreDefault() {
+-//  Options.ShowMultiFrameFlashOperations = false;
+   Options.ForceScripting = true;
+   Options.AutomuteExclusionsText = 'http://www.rdio.com\nhttp://www.pandora.com\n'; // TODO: add to this  
+   Options.UndetectedText = 'http://www.rdio.com\n';
+-//  Options.AutoMuteMode = "Disabled";
+-
+-/*
+-  Options.ShowMuteStatusIcon = false;
+-  Options.ShowDetailedOperations = false;
+-  Options.ShowAllAudioSources = true;
+-  Options.AutoMuteBackground = false;
+-  Options.NoDestructiveAutoMute = true;
+-  Options.ShowMultiFrameFlashOperations = false;
+-  Options.IncludeMenuForFlash = false;
+-  Options.FlickerEnabled = true;
+-  Options.ForceScripting = true;
+-
+-  Options.LoggingEnabled = false;
+-  Options.MsgLoggingEnabled = false;
+-//  options.SocketEnabled = LoadFromStorage("socketEnabled", 'false');
+-  Options.AnalyticsEnabled = false;
+-  Options.UpdateOnPopup = false;
+-  
+-  Options.UrlExclusionRules = '';
+-*/
+-
+ 
+   loadOptions(Options);
+ }
+--- a/js/popup/popup.js
++++ b/js/popup/popup.js
+@@ -35,7 +35,6 @@ function OnDisplayInfo(displayInfo)
+   output += '  <b>Tabs that are possibly making sound</b>';
+   output += '  <div id="toprightmenu" style="text-align: right; width=25%; float: right; margin-bottom: 6px; }">';
+   output += '  <a href="#" id="updateall" class="button" >refresh</a>';
+-  output += '  &nbsp;&nbsp;<a id="options"  class="button" href="#">options</a>';
+   output += '  &nbsp;&nbsp;<a href="#" class="button" id="documentation" href="#">documentation</a>';
+   output += '  &nbsp;&nbsp;';
+   output += '  </div>'; //header
+@@ -70,7 +69,6 @@ var CreateEventListeners = function(displayInfo)
+   //console.log(displayInfo);
+ 
+   document.getElementById("updateall").addEventListener("click", function(evt) { OperateOnTab(bg.messaging.ALLTABS, Operation.Update, true); } );
+-  document.getElementById("options").addEventListener("click", function(evt) { window.open(chrome.extension.getURL("/src/js/options.html")); } );
+   document.getElementById("documentation").addEventListener("click", function(evt) { window.open("http://www.mutetab.com/mutetabdoc.html"); } );
+   document.getElementById("showblocked").addEventListener("click", function(evt) { bg.Options.ShowBlocked = !bg.Options.ShowBlocked; bg.SaveOptions(bg.Options); location.reload(); } );
+   document.getElementById("muteall").addEventListener("click", function(evt) { OperateOnTab(bg.messaging.ALLTABS, Operation.SmartMute, true); } );
+diff --git a/js/popup/popup_operation.js b/js/popup/popup_operation.js
+index 95d4535..bfe6c23 100644
+--- a/js/popup/popup_operation.js
++++ b/js/popup/popup_operation.js
+@@ -1,4 +1,4 @@
+-// This code determines what actions to take when an operation icon is clicked.   This implementation is for the MuteTab popup window.
++// This code determines what actions to take when an operation icon is clicked.   This implementation is for the StopTab popup window.
+ 
+ if (typeof(bg) === 'unknown')
+   var bg = chrome.extension.getBackgroundPage();
+@@ -69,7 +69,7 @@ function Expand(tabId)
+ //	console.log("expand");
+ 	try {
+ 		document.getElementById("audiosourcesfortab_" + tabId).style.display = 'block';
+-		document.getElementById("collapseexpandfortab_" + tabId).src = "popup/operations/minus.png";
++		document.getElementById("collapseexpandfortab_" + tabId).src = "img/operations/minus.png";
+ 
+ 		bg.Options.ExpandTabId = tabId;
+ 		bg.SaveOptions(bg.Options);
+@@ -88,7 +88,7 @@ function Collapse(tabId)
+ 
+ 	try {
+ 		document.getElementById("audiosourcesfortab_" + tabId).style.display = 'none';
+-		document.getElementById("collapseexpandfortab_" + tabId).src = "popup/operations/plus2.png";
++		document.getElementById("collapseexpandfortab_" + tabId).src = "img/operations/plus2.png";
+ 	} catch (ex)
+ 	{
+ 
+diff --git a/js/popup/states/music.png b/js/popup/states/music.png
+deleted file mode 100644
+index a381e8f..0000000
+Binary files a/js/popup/states/music.png and /dev/null differ
+diff --git a/js/shared/core.js b/js/shared/core.js
+index 28cb291..30a1124 100644
+--- a/js/shared/core.js
++++ b/js/shared/core.js
+@@ -1,4 +1,4 @@
+-// Note: not all values in enumerations or fields in structs are actually used by MuteTab
++// Note: not all values in enumerations or fields in structs are actually used by StopTab
+ 
+ // String must be unique for each entry here
+ AudioSourceType =
+@@ -128,7 +128,7 @@ TabInfo = function()
+   this.Incognito = false;
+   this.Removed = false;
+ 
+-  // Specific to MuteTab
++  // Specific to StopTab
+   this.AllSourcesInTab = false;
+   this.FavIconUrl = "";
+ };
+@@ -161,7 +161,7 @@ FrameInfo = function()
+   this.IFrameId = "";
+   this.Port = null;
+ 
+-  // Specific to MuteTab
++  // Specific to StopTab
+   this.AudioSources = [];
+   this.AllSourcesInFrame = false;
+   this.FrameRequestId = -1;
+diff --git a/js/shared/soundstatusdisplay.js b/js/shared/soundstatusdisplay.js
+index 1a4d165..5cfc2a2 100644
+--- a/js/shared/soundstatusdisplay.js
++++ b/js/shared/soundstatusdisplay.js
+@@ -83,7 +83,7 @@ function GetHtmlForTabInfo(tabInfo, options) {
+ 	}
+ 	var output = '<div>'; // tab
+ 	output += '<div style="text-align: left; float: left">';
+-	output += '<img id="collapseexpandfortab_' + tabInfo.TabId + '" class="tabexpandcollapseicon" src="popup/operations/plus2.png" style="cursor:pointer; padding-right: 10px; text-align: left; float: left">';
++	output += '<img id="collapseexpandfortab_' + tabInfo.TabId + '" class="tabexpandcollapseicon" src="img/operations/plus2.png" style="cursor:pointer; padding-right: 10px; text-align: left; float: left">';
+ 
+ 	output += '<a id="showTabImage_' + tabInfo.TabId + '" style="cursor:pointer;float: left" href="#" title="Click to show tab">' + '<img style="padding-right: 5px;" class="favicon" src="chrome://favicon/' + tabInfo.FullUrl + '">' + '</a>';
+ 	//  output += '<img class="favicon" src="http://geticon.org/of/' + tabInfo.FullUrl + '">';
+diff --git a/js/shared/soundstatusdisplay_popup.js b/js/shared/soundstatusdisplay_popup.js
+index 9d76e76..381d81b 100644
+--- a/js/shared/soundstatusdisplay_popup.js
++++ b/js/shared/soundstatusdisplay_popup.js
+@@ -5,7 +5,7 @@ var soundstatusdisplay_popup_loaded = true;
+ //<html xmlns="http://www.w3.org/1999/xhtml">
+ function GetOperationHtml(operation, classname)
+ {
+-	return '<img class="' + classname + '" src="' + ImageBaseUrl + 'src/js/popup/operations/' + operation.toLowerCase() + '.png" title="' + operation + '">';
++	return '<img class="' + classname + '" src="' + ImageBaseUrl + 'src/img/operations/' + operation.toLowerCase() + '.png" title="' + operation + '">';
+ }
+ 
+ /* Code is now dead but use of this is not consistent with operations
+diff --git a/mutetab_chrome.json b/mutetab_chrome.json
+index 28defcf..e349d8b 100644
+--- a/mutetab_chrome.json
++++ b/mutetab_chrome.json
+@@ -1,11 +1,10 @@
+ {
+   "web_accessible_resources": [
+-	  "src/js/favicon.png"
++	  "src/img/favicon.png"
+   ],
+   "icons" : {
+-		"16" : "src/js/favicon.png",
+-    "48" : "src/js//favicon.png",
+-    "128" : "src/js/favicon.png"
+-  },
+-  "options_page": "src/js/options.html"
++		"16" : "src/img/favicon.png",
++    "48" : "src/img/favicon.png",
++    "128" : "src/img/favicon.png"
++  }
+ }
+diff --git a/popup.html b/popup.html
+new file mode 100644
+index 0000000..8dda7e4

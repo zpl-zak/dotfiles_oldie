@@ -1,0 +1,98 @@
+/* Popup CSS relies on Chromium CSS */
+
+@import url("chromium/chrome_shared.css");
+@import url("ui/generate-alert.css");
+@import url("ui/hover.css");
+@import url("ui/fade.css");
+
+html {
+  height: auto; /* Needed to override chromium/chrome-shared.css */
+}
+
+body {
+  background: #EDECEB;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#popup {
+  margin: 5px;
+}
+
+/* Controls CSS */
+
+#controls {
+  width: 82px;
+}
+
+input[type="image"] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+input[type="image"]:focus {
+  outline: none;
+}
+
+input[type="image"]:not(:last-child) {
+  margin-right: 2px;
+}
+
+input[type="image"].disabled {
+  opacity: 0.2;
+}
+
+/* Setup CSS */
+
+h3, label {
+  text-shadow: -1px 0 #DDD, 0 1px #DDD, 1px 0 #DDD, 0 -1px #DDD;
+}
+
+input[type="text"] {
+  width: 152px;
+  display: block;
+}
+
+input[type="number"] {
+  width: 52px;
+  display: block;
+}
+
+select {
+  display: block;
+}
+
+textarea {
+  width: 512px;
+  color: #777777;
+}
+
+.setup-buttons {
+  margin-top: 12px;
+  text-align: center;
+}
+
+/*div.table {
+  display: table;
+}*/
+
+div.row  {
+  margin-top: 10px;
+/*  display: table-row;*/
+}
+
+div.column {
+  display: table-cell;
+  padding: 0 10px 10px 0;
+}
+
+div.column:not(:last-child) {
+  padding-right: 50px;
+}
+
+div.column > label {
+  display: block;
+}
